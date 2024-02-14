@@ -1,10 +1,12 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
     public float speed = 10;
+    public ParticleSystem explosion;
 
     void Start()
     {
@@ -18,6 +20,7 @@ public class Rocket : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
         print("boom");
     }
